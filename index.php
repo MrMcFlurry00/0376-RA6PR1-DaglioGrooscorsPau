@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute(['email' => $email]);
     $user = $stmt->fetch();
 
-    if ($user && (password_verify($contrasenya, $user['contrasenya']) || $contrasenya === '12345')) {
+   if ($user && password_verify($contrasenya, $user['contrasenya'])) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['user_nom'] = $user['nom'];
         $_SESSION['user_rol'] = $user['rol'];
