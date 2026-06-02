@@ -14,6 +14,12 @@ $alertes = $pdo->query($query)->fetchAll();
 ?>
 <!DOCTYPE html>
 <html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Llista Vermella d'Incompliment</title>
+</head>
 <body>
     <h2>⚠️ Llista Vermella d'Incompliment</h2>
     <a href="projectes.php">Anar a Projectes</a> | <a href="logout.php">Tancar sessió</a><hr>

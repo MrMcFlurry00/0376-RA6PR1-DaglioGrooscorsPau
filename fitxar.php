@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id'])) { header("Location: index.php"); exit; }
 $usuari_id = $_SESSION['user_id'];
 
 // Comprovar si té un registre actiu sense tancar
-$stmt = $pdo->prepare("SELECT * FROM registres WHERE window_id = :uid AND sortida IS NULL");
+$stmt = $pdo->prepare("SELECT * FROM registres WHERE usuari_id = :uid AND sortida IS NULL");
 $stmt->execute(['uid' => $usuari_id]);
 $registre_actiu = $stmt->fetch();
 
@@ -27,6 +27,12 @@ $projectes = $pdo->query("SELECT * FROM projectes")->fetchAll();
 ?>
 <!DOCTYPE html>
 <html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Temps</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
     <h2>Benvingut, <?php echo htmlspecialchars($_SESSION['user_nom']); ?></h2>
     <a href="logout.php">Tancar sessió</a><hr>
