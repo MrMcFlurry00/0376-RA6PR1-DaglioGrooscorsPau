@@ -73,7 +73,7 @@ $valors_proj = json_encode(array_map('floatval', array_column($hpp, 'h')));
 $colors_proj = json_encode(array_column($hpp, 'color'));
 
 // Empleats treballant ara
-$stmt = $pdo->query("SELECT u.id, u.nom, r.entrada, p.nom as projecte, p.color as color_proj
+$stmt = $pdo->query("SELECT r.id, u.id as uid, u.nom, r.entrada, p.nom as projecte, p.color as color_proj
                      FROM registres r
                      JOIN usuaris u ON r.usuari_id = u.id
                      JOIN projectes p ON r.projecte_id = p.id
@@ -223,7 +223,7 @@ $projectes_risc = $stmt->fetchAll();
                                 <td><?php echo date('H:i', $ent); ?></td>
                                 <td><?php echo format_durada($dur); ?></td>
                                 <td>
-                                    <form method="POST" style="display:inline;" onsubmit="return confirm('Tancar el registre de <?php echo e($t['nom']); ?> a l\\'hora actual?')">
+                                    <form method="POST" style="display:inline;" onsubmit="return confirm('Tancar el registre d\\'aquest empleat?')">
                                         <input type="hidden" name="tancar_registre" value="1">
                                         <input type="hidden" name="registre_id" value="<?php echo $t['id']; ?>">
                                         <button type="submit" class="btn btn-danger btn-sm">🔒 Tancar</button>
